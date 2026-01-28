@@ -34,7 +34,11 @@ def main():
         print("Нет изображений для этого запуска.")
         return
 
-    download_images(image_urls, 'Space X', prefix='spacex')
+    download_images(
+        image_urls=image_urls,
+        images_dir='Space X',
+        prefix='spacex'
+    )
 
 
 if __name__ == '__main__':

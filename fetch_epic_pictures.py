@@ -62,7 +62,7 @@ def main():
 
     download_images(
         image_urls=image_urls,
-        images_dir='images/epic',
+        images_dir='NASA/epic',
         prefix='epic'
     )
 

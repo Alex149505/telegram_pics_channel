@@ -31,7 +31,7 @@ def main():
 
     download_images(
         image_urls=image_urls,
-        images_dir='NASA/apod',
+        images_dir='NASA',
         prefix='apod'
     )
 
