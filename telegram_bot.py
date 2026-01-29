@@ -1,6 +1,7 @@
 import os
 import time
 import argparse
+import random
 from dotenv import load_dotenv
 from telegram import Bot
 
@@ -30,10 +31,15 @@ def publish_files_forever(bot, chat_id, files_dirs):
     if not files:
         raise RuntimeError('В указанных папках нет файлов')
 
+    random.shuffle(files)
     idx = 0
     while True:
         send_file(bot, chat_id, files[idx])
-        idx = (idx + 1) % len(files)
+        idx += 1
+
+        if idx >= len(files):
+            random.shuffle(files)  # ← НОВОЕ: перемешали перед новым кругом
+            idx = 0
         time.sleep(4 * 60 * 60)
 
 
@@ -55,7 +61,7 @@ def main():
     chat_id = (os.environ['CHAT_ID'])
 
     files_dirs = [
-        'NASA/apod',
+        'NASA',
         'Space X',
         'NASA/epic',
     ]
