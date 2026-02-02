@@ -10,19 +10,13 @@ EPIC_API_URL = 'https://api.nasa.gov/EPIC/api/natural/images'
 
 
 def fetch_epic_metadata(api_key):
-    try:
-        response = requests.get(
-            EPIC_API_URL,
-            params={'api_key': api_key},
-            timeout=10
-        )
-        response.raise_for_status()
-        return response.json()
-
-    except requests.exceptions.RequestException as error:
-        print('Ошибка при запросе к NASA EPIC API:')
-        print(error)
-        return []
+    response = requests.get(
+        EPIC_API_URL,
+        params={'api_key': api_key},
+        timeout=10
+    )
+    response.raise_for_status()
+    return response.json()
 
 
 def build_epic_image_url(image_name, date_str, api_key):
@@ -36,13 +30,14 @@ def build_epic_image_url(image_name, date_str, api_key):
     )
 
 
-def get_epic_image_urls(epic_items, limit=10):
+def get_epic_image_urls(epic_items, limit=10, api_key=None):
     image_urls = []
 
     for item in epic_items[:limit]:
         image_url = build_epic_image_url(
             item['image'],
-            item['date']
+            item['date'],
+            api_key
         )
         image_urls.append(image_url)
 
@@ -53,18 +48,19 @@ def main():
     load_dotenv()
     api_key = os.environ['NASA_API_KEY']
 
-    epic_items = fetch_epic_metadata(api_key)
-    if not epic_items:
-        print('Не удалось получить данные EPIC')
-        return
+    try:
+        epic_items = fetch_epic_metadata(api_key)
+        image_urls = get_epic_image_urls(epic_items, limit=10, api_key=api_key)
 
-    image_urls = get_epic_image_urls(epic_items, limit=10)
+        download_images(
+            image_urls=image_urls,
+            images_dir='NASA/epic',
+            prefix='epic'
+        )
 
-    download_images(
-        image_urls=image_urls,
-        images_dir='NASA/epic',
-        prefix='epic'
-    )
+    except requests.exceptions.RequestException as error:
+        print('Ошибка при работе с NASA EPIC API:')
+        print(error)
 
 
 if __name__ == '__main__':
