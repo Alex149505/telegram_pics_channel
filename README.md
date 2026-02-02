@@ -22,11 +22,11 @@ The main goal of the project is to demonstrate working with REST APIs, file down
 
 ```text
 .
-├── common.py                 # Common helper functions (image downloading)
-├── fetch_spacex_images.py    # Download SpaceX launch images
-├── fetch_apod_images.py      # Download NASA APOD images
-├── fetch_epic_images.py      # Download NASA EPIC images
-├── telegram_bot.py           # Publish images to Telegram
+├── pictures_downloader.py                 # Common helper functions (pictures downloading)
+├── fetch_spacex_pictures.py    # Download SpaceX launch images
+├── fetch_apod_pictures.py      # Download NASA APOD images
+├── fetch_epic_pictures.py      # Download NASA EPIC images
+├── telegram_publisher.py           # Publish images to Telegram
 ├── NASA/
 │   ├── apod/
 │   └── epic/
