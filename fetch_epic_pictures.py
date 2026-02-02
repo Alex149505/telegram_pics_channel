@@ -3,7 +3,7 @@ import requests
 from datetime import datetime
 from dotenv import load_dotenv
 
-from common import download_images
+from image_downloader import download_images
 
 
 EPIC_API_URL = 'https://api.nasa.gov/EPIC/api/natural/images'

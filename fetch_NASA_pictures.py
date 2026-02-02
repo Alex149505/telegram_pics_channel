@@ -2,7 +2,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from common import download_images
+from image_downloader import download_images
 
 
 URL = 'https://api.nasa.gov/planetary/apod'
@@ -31,7 +31,7 @@ def main():
 
     download_images(
         image_urls=image_urls,
-        images_dir='NASA',
+        images_dir='NASA/apod',
         prefix='apod'
     )
 
