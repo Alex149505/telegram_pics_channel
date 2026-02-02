@@ -31,7 +31,7 @@ def build_epic_image_url(image_name, date_str, api_key):
     )
 
     params = {'api_key': api_key}
-    return f"{url}?{urlencode(params)}"
+    return f'{url}?{urlencode(params)}'
 
 
 def get_epic_image_urls(epic_items, limit=10, api_key=None):
