@@ -2,6 +2,8 @@ import os
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
+from urllib.parse import urlencode
+
 
 from image_downloader import download_images
 
@@ -22,12 +24,14 @@ def fetch_epic_metadata(api_key):
 def build_epic_image_url(image_name, date_str, api_key):
     date = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
 
-    return (
+    url = (
         f'https://api.nasa.gov/EPIC/archive/natural/'
         f'{date.year}/{date.month:02d}/{date.day:02d}/'
         f'png/{image_name}.png'
-        f'?api_key={api_key}'
     )
+
+    params = {'api_key': api_key}
+    return f"{url}?{urlencode(params)}"
 
 
 def get_epic_image_urls(epic_items, limit=10, api_key=None):
