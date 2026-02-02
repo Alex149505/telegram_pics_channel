@@ -87,7 +87,7 @@ Downloads images from the latest SpaceX launch (or a specific launch ID if imple
 ### Download NASA APOD Images
 
 ```bash
-python fetch_apod_pictures.py
+python fetch_NASA_pictures.py
 ```
 
 Downloads multiple APOD images in a single request.
@@ -130,7 +130,7 @@ Behavior:
 
 * Images are taken from the following directories:
 
-  * `NASA`
+  * `NASA/apod`
   * `NASA/epic`
   * `Space X`
 * Images are shuffled before publishing
