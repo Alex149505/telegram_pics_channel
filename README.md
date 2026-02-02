@@ -77,7 +77,7 @@ NASA_API_KEY=your_nasa_api_key
 ### Download SpaceX Images
 
 ```bash
-python fetch_spacex_images.py
+python fetch_spacex_pictures.py
 ```
 
 Downloads images from the latest SpaceX launch (or a specific launch ID if implemented).
@@ -87,7 +87,7 @@ Downloads images from the latest SpaceX launch (or a specific launch ID if imple
 ### Download NASA APOD Images
 
 ```bash
-python fetch_apod_images.py
+python fetch_apod_pictures.py
 ```
 
 Downloads multiple APOD images in a single request.
@@ -97,7 +97,7 @@ Downloads multiple APOD images in a single request.
 ### Download NASA EPIC Images
 
 ```bash
-python fetch_epic_images.py
+python fetch_epic_pictures.py
 ```
 
 Downloads 5–10 EPIC images of Earth in PNG format.
@@ -111,7 +111,7 @@ Downloads 5–10 EPIC images of Earth in PNG format.
 Use the `--file` argument to publish a single image:
 
 ```bash
-python telegram_bot.py --file NASA/apod/example.jpg
+python telegram_publisher.py --file NASA/apod/example.jpg
 ```
 
 Only the specified image will be published.
@@ -123,7 +123,7 @@ Only the specified image will be published.
 If no file is specified, the bot publishes images automatically:
 
 ```bash
-python telegram_bot.py
+python telegram_publisher.py
 ```
 
 Behavior:
