@@ -26,21 +26,16 @@ def publish_single_file(bot, chat_id, file_path):
     send_file(bot, chat_id, file_path)
 
 
-def publish_files_forever(bot, chat_id, files_dirs):
-    files = get_all_files(files_dirs)
+def publish_files_forever(bot, chat_id, files):
     if not files:
         raise RuntimeError('В указанных папках нет файлов')
 
-    random.shuffle(files)
-    idx = 0
     while True:
-        send_file(bot, chat_id, files[idx])
-        idx += 1
+        for file_path in files:
+            send_file(bot, chat_id, file_path)
+            time.sleep(4 * 60 * 60)
 
-        if idx >= len(files):
-            random.shuffle(files)  # ← НОВОЕ: перемешали перед новым кругом
-            idx = 0
-        time.sleep(4 * 60 * 60)
+        random.shuffle(files)
 
 
 def parse_arguments():
@@ -58,7 +53,7 @@ def parse_arguments():
 def main():
     load_dotenv()
     token = os.environ['TELEGRAM_TOKEN']
-    chat_id = (os.environ['TG_CHAT_ID'])
+    chat_id = os.environ['TG_CHAT_ID']
 
     files_dirs = [
         'NASA',
@@ -72,7 +67,8 @@ def main():
     if args.file:
         publish_single_file(bot, chat_id, args.file)
     else:
-        publish_files_forever(bot, chat_id, files_dirs)
+        files = get_all_files(files_dirs)
+        publish_files_forever(bot, chat_id, files)
 
 
 if __name__ == '__main__':
