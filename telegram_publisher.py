@@ -57,8 +57,8 @@ def parse_arguments():
 
 def main():
     load_dotenv()
-    token = os.environ['TOKEN']
-    chat_id = (os.environ['CHAT_ID'])
+    token = os.environ['TELEGRAM_TOKEN']
+    chat_id = (os.environ['TG_CHAT_ID'])
 
     files_dirs = [
         'NASA',

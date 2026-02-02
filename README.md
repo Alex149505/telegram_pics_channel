@@ -59,15 +59,15 @@ All configuration is done using **environment variables**.
 Create a `.env` file in the project root directory:
 
 ```env
-TOKEN=your_telegram_bot_token
-CHAT_ID=your_telegram_channel_id
+TELEGRAM_TOKEN=your_telegram_bot_token
+TG_CHAT_ID=your_telegram_channel_id
 NASA_API_KEY=your_nasa_api_key
 ```
 
 ### Environment Variables Explained
 
-* **TOKEN** – Telegram bot token obtained from @BotFather
-* **CHAT_ID** – ID of the Telegram channel where images will be published
+* **TELEGRAM_TOKEN** – Telegram bot token obtained from @BotFather
+* **TG_CHAT_ID** – ID of the Telegram channel where images will be published
 * **NASA_API_KEY** – API key from [https://api.nasa.gov/](https://api.nasa.gov/)
 
 ---
