@@ -24,11 +24,3 @@ def download_images(image_urls, images_dir, prefix='image'):
             file.write(response.content)
 
         print(f'Saved {file_path}')
-
-
-def main():
-    pass
-
-
-if __name__ == '__main__':
-    main()
