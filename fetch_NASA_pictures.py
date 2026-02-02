@@ -20,7 +20,7 @@ def fetch_nasa_pictures(api_key):
 
 def main():
     load_dotenv()
-    api_key = os.environ['API_KEY']
+    api_key = os.environ['NASA_API_KEY']
     apod_items = fetch_nasa_pictures(api_key)
 
     image_urls = []

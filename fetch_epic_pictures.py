@@ -51,7 +51,7 @@ def get_epic_image_urls(epic_items, limit=10):
 
 def main():
     load_dotenv()
-    api_key = os.environ['API_KEY']
+    api_key = os.environ['NASA_API_KEY']
 
     epic_items = fetch_epic_metadata(api_key)
     if not epic_items:
